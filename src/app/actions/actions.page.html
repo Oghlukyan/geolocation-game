@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ adventure?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="adventure">
+  <div class="ion-padding-start">
+    <ion-text>
+      <h1>{{ adventure.description }}</h1>
+    </ion-text>
+    <ion-text>
+      <h5>Action {{ visibleActionIndex + 1 }}/{{ adventure.actions.length }}</h5>
+    </ion-text>
+  </div>
+  <div>
+    <ion-button>
+      <ion-icon name="map"></ion-icon>
+      <ion-text>Show Adventure on map</ion-text>
+    </ion-button>
+    <app-action
+      [action]="adventure.actions[visibleActionIndex]"
+    ></app-action>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-segment scrollable
+                 [value]="0"
+                 (ionChange)="goToAction($event)">
+      <ion-segment-button *ngFor="let action of adventure.actions; index as i"
+                          [value]="i">
+        <ion-text>{{ i + 1 }}</ion-text>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,54 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{ action.name }}</ion-card-title>
+    <ion-card-subtitle>{{ action.description }}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-button>
+      <ion-icon name="map"></ion-icon>
+      <ion-text>Show Action on map</ion-text>
+    </ion-button>
+    <img [src]="action.imageUrls && action.imageUrls[0]">
+    <ng-container [ngSwitch]="action.type">
+      <ng-container *ngSwitchCase="EActionTypes.fillBlank">
+        <ion-item>
+          <ion-label position="floating">{{ action.question }}</ion-label>
+          <ion-textarea></ion-textarea>
+        </ion-item>
+      </ng-container>
+      <ng-container *ngSwitchCase="EActionTypes.hotSpot">
+        <p>what is this</p>
+      </ng-container>
+      <ng-container *ngSwitchCase="EActionTypes.singleChoice">
+        <ng-container [ngTemplateOutlet]="dropdownTpl" [ngTemplateOutletContext]="{ $implicit: false }"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="EActionTypes.multiChoice">
+        <ng-container [ngTemplateOutlet]="dropdownTpl" [ngTemplateOutletContext]="{ $implicit: true }"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="EActionTypes.numericRes">
+        <ion-item>
+          <ion-label position="floating">{{ action.question }}</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+      </ng-container>
+      <ng-container *ngSwitchCase="EActionTypes.truth">
+        <ion-item>
+          <ion-label>{{ action.question }}</ion-label>
+          <ion-toggle></ion-toggle>
+        </ion-item>
+      </ng-container>
+    </ng-container>
+  </ion-card-content>
+</ion-card>
+
+<ng-template #dropdownTpl let-multiple>
+  <ion-item>
+    <ion-label>{{ action.question }}</ion-label>
+    <ion-select [multiple]="multiple">
+      <ion-select-option *ngFor="let option of action.questionOptions"
+                         [value]="option">
+        {{ option }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+</ng-template>

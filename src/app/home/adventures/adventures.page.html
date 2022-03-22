@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar></ion-toolbar> <!-- to keep the required height for the content start -->
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="adventures$ | async as adventures">
+    <ion-item *ngFor="let adventure of adventures">
+      <ion-card>
+        <ion-card-header (click)="goToActions(adventure.id)">
+          <ion-card-title>
+            <ion-text>{{ adventure.name }}</ion-text>
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </ion-card-title>
+          <ion-card-subtitle>{{ adventure.description }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+<!--          ASK about ideas for video and audio -->
+          <img *ngIf="adventure.imageUrls?.length"
+               [src]="adventure.imageUrls[0]"/>
+          <ion-button>
+            <ion-icon name="map"></ion-icon>
+            <ion-text>Show on map</ion-text>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>
