@@ -43,7 +43,7 @@
 
 <ng-template #dropdownTpl let-multiple>
   <ion-item>
-    <ion-label>{{ action.question }}</ion-label>
+    <ion-label position="floating">{{ action.question }}</ion-label>
     <ion-select [multiple]="multiple">
       <ion-select-option *ngFor="let option of action.questionOptions"
                          [value]="option">

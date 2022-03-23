@@ -8,4 +8,5 @@ export interface IAction extends IAbstractDetails {
   type: EActionTypes;
   question: string;
   questionOptions?: string[];
+  prerequisiteActionIds: string[];
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdventureService } from '../home/services/adventure.service';
 import { tap } from 'rxjs/operators';
 import { IAdventure } from '../core/interfaces/adventure.interface';
+import { IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-actions',
@@ -11,9 +12,12 @@ import { IAdventure } from '../core/interfaces/adventure.interface';
 })
 export class ActionsPage implements OnInit {
 
-  adventure: IAdventure;
+  @ViewChild(IonSlides) slides: IonSlides;
 
-  visibleActionIndex = 0;
+  adventure: IAdventure;
+  selectedActionIndex = 0;
+
+  readonly slideOpts = {};
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -32,12 +36,15 @@ export class ActionsPage implements OnInit {
     ).subscribe();
   }
 
-  goToAction(event) {
-    this.visibleActionIndex = +event.detail.value;
+  async handleSlideChange(event) {
+    const index = await this.slides.getActiveIndex();
+    this.selectedActionIndex = index;
   }
 
-  // TODO no next and prev.
-  // use points instead
-  // swipe for next and prev.
-  // some actions can be dependent on another ones
+  handleSegmentChange(event) {
+    const index = +event.detail.value;
+    this.slides.slideTo(index);
+  }
+
+  // TODO some actions can be dependent on another ones
 }

@@ -13,7 +13,7 @@
       <h1>{{ adventure.description }}</h1>
     </ion-text>
     <ion-text>
-      <h5>Action {{ visibleActionIndex + 1 }}/{{ adventure.actions.length }}</h5>
+      <h5>Action {{ selectedActionIndex + 1 }}/{{ adventure.actions.length }}</h5>
     </ion-text>
   </div>
   <div>
@@ -21,16 +21,21 @@
       <ion-icon name="map"></ion-icon>
       <ion-text>Show Adventure on map</ion-text>
     </ion-button>
-    <app-action
-      [action]="adventure.actions[visibleActionIndex]"
-    ></app-action>
+    <ion-slides [options]="slideOpts"
+                (ionSlideWillChange)="handleSlideChange($event)">
+      <ion-slide *ngFor="let action of adventure.actions">
+        <app-action
+          [action]="action"
+        ></app-action>
+      </ion-slide>
+    </ion-slides>
   </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
     <ion-segment scrollable
-                 [value]="0"
-                 (ionChange)="goToAction($event)">
+                 [value]="selectedActionIndex"
+                 (ionChange)="handleSegmentChange($event)">
       <ion-segment-button *ngFor="let action of adventure.actions; index as i"
                           [value]="i">
         <ion-text>{{ i + 1 }}</ion-text>
