@@ -1,16 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdventureService } from '../home/services/adventure.service';
-import { tap } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 import { IAdventure } from '../core/interfaces/adventure.interface';
 import { IonSlides } from '@ionic/angular';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-actions',
   templateUrl: './actions.page.html',
   styleUrls: ['./actions.page.scss'],
 })
-export class ActionsPage implements OnInit {
+export class ActionsPage implements OnInit, OnDestroy {
 
   @ViewChild(IonSlides) slides: IonSlides;
 
@@ -18,6 +19,8 @@ export class ActionsPage implements OnInit {
   selectedActionIndex = 0;
 
   readonly slideOpts = {};
+
+  private destroy$ = new Subject();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -30,10 +33,15 @@ export class ActionsPage implements OnInit {
   }
 
   ngOnInit() {
-    // TODO destroy
     this.adventureService.getAdventureById(this.adventureId).pipe(
+      takeUntil(this.destroy$),
       tap(res => this.adventure = res),
     ).subscribe();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   async handleSlideChange(event) {
