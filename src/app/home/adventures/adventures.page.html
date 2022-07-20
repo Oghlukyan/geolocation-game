@@ -4,15 +4,15 @@
 
 <ion-content>
   <app-viewtype-segment></app-viewtype-segment>
-  <ion-list *ngIf="adventures$ | async as adventures">
+  <ion-list *ngIf="adventures">
     <ion-item>
       <ion-label class="search-input-label" position="floating">
         <ion-icon name="search"></ion-icon>
         <ion-text>Search By Name</ion-text>
       </ion-label>
-      <ion-input></ion-input>
+      <ion-input (ionChange)="filter($event)"></ion-input>
     </ion-item>
-    <ion-item *ngFor="let adventure of adventures">
+    <ion-item *ngFor="let adventure of visibleAdventures">
       <ion-card>
         <ion-card-header (click)="goToActions(adventure.id)">
           <ion-card-title>
