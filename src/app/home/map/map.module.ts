@@ -7,18 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { MapPageRoutingModule } from './map-routing.module';
 
 import { MapPage } from './map.page';
-import { GoogleMapsModule } from '@angular/google-maps';
 import { ViewtypeSegmentModule } from '../../shared/common-components/viewtype-segment/viewtype-segment.module';
+import { OnlyMapModule } from '../../shared/only-map/only-map.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GoogleMapsModule,
     MapPageRoutingModule,
     ViewtypeSegmentModule,
+    OnlyMapModule,
   ],
-  declarations: [MapPage]
+  declarations: [MapPage],
 })
-export class MapPageModule {}
+export class MapPageModule {
+}
