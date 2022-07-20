@@ -1,19 +1,19 @@
 <ion-card>
   <ion-card-header>
-    <ion-card-title>{{ action.name }}</ion-card-title>
+    <ion-card-title>
+      <ion-text>{{ action.name }}</ion-text>
+      <ion-button fill="clear">
+        <ion-icon name="map"></ion-icon>
+      </ion-button>
+    </ion-card-title>
     <ion-card-subtitle>{{ action.description }}</ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>
-    <ion-button>
-      <ion-icon name="map"></ion-icon>
-      <ion-text>Show Action on map</ion-text>
-    </ion-button>
-    <img [src]="action.imageUrls && action.imageUrls[0]">
     <ng-container [ngSwitch]="action.type">
       <ng-container *ngSwitchCase="EActionTypes.fillBlank">
         <ion-item>
           <ion-label position="floating">{{ action.question }}</ion-label>
-          <ion-textarea></ion-textarea>
+          <ion-textarea [autoGrow]="true"></ion-textarea>
         </ion-item>
       </ng-container>
       <ng-container *ngSwitchCase="EActionTypes.hotSpot">
@@ -38,6 +38,9 @@
         </ion-item>
       </ng-container>
     </ng-container>
+    <div class="action-media">
+      <img [src]="action.imageUrls && action.imageUrls[0]">
+    </div>
   </ion-card-content>
 </ion-card>
 

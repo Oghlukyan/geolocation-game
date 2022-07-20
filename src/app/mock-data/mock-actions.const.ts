@@ -4,10 +4,12 @@ import { EActionTypes } from '../core/enums/action-types.enum';
 export const mockActions: IAction[] = [
   {
     type: EActionTypes.fillBlank,
-    question: 'how are you?',
+    question: 'How many stairs does the pillory have?',
     imageUrls: [
-      'https://www.eurodicas.com.br/wp-content/uploads/2018/11/braganca-em-portugal-1200x900.jpg',
+      'https://cms.infoportugal.info/media/fotos/final/Braganca/BRG6626.jpg',
     ],
+    description: 'The Pillory of Bragança is a 15th-century sculpted stone column with symbolic political, administrative and judicial significance, erected over a four-step octagonal platform, located in the civil parish of Sé, Santa Maria e Meixedo, municipality of Bragança.',
+    name: 'Pelourinho',
   },
   {
     type: EActionTypes.multiChoice,
@@ -44,7 +46,7 @@ export const mockActions: IAction[] = [
     ...it,
     id: `${ index }`,
     geoPoint: { latitude: 1, longitude: 1 },
-    name: `action ${index + 1}`,
-    description: `description for action ${index + 1}`,
+    name: it.name || `action ${index + 1}`,
+    description: it.description || `description for action ${index + 1}`,
   } as IAction),
 );

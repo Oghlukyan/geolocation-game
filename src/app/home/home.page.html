@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Geo. Game
+      Explore interactive
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,13 +10,23 @@
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="adventures">
-        <ion-icon name="accessibility-outline"></ion-icon>
-        <ion-label>Adventures</ion-label>
+        <ion-icon name="search"></ion-icon>
+        <ion-label>Explore</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="map">
-        <ion-icon name="map"></ion-icon>
-        <ion-label>Map</ion-label>
+      <ion-tab-button>
+        <ion-icon name="download-outline"></ion-icon>
+        <ion-label>Saved</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="in-process">
+        <ion-icon name="accessibility-outline"></ion-icon>
+        <ion-label>In process</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="profile">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label>Profile</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>

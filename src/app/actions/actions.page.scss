@@ -1,3 +1,21 @@
+ion-header ion-toolbar {
+  --background: var(--ion-color-medium);
+}
+
+.adventure-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ion-footer ion-toolbar {
+  --background: #aee6ffb3;
+}
+
+ion-content {
+  --background: var(--ion-color-light);
+}
+
 ion-footer {
   ion-button {
     width: 50%;

@@ -1,12 +1,42 @@
+ion-list {
+  height: 100%;
+  background: var(--ion-color-tertiary);
+}
+
+ion-item {
+  --background: var(--ion-color-tertiary);
+}
+
 ion-card {
   width: 100%;
+  background: var(--ion-color-light);
 }
 
 ion-card-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: var(--ion-color-primary);
 }
 
+ion-card-subtitle {
+  color: var(--ion-color-secondary);
+}
+
+ion-card-content {
+  ion-button {
+    float: right;
+  }
+}
+
+.search-input-label {
+  display: flex;
+  align-items: center;
+  color: var(--ion-color-primary);
+
+  ion-icon {
+    padding-right: 10px;
+  }
+}
 
 // ASK to send again 'dissertation in english' in email. link is expired

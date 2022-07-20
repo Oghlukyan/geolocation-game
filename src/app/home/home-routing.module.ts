@@ -16,6 +16,14 @@ const routes: Routes = [
         loadChildren: () => import('./adventures/adventures.module').then(m => m.AdventuresPageModule),
       },
       {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
+      },
+      {
+        path: 'in-process',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
+      },
+      {
         path: '',
         redirectTo: 'adventures',
       },

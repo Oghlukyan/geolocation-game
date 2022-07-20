@@ -8,6 +8,7 @@ import { MapPageRoutingModule } from './map-routing.module';
 
 import { MapPage } from './map.page';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ViewtypeSegmentModule } from '../../shared/common-components/viewtype-segment/viewtype-segment.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     FormsModule,
     IonicModule,
     GoogleMapsModule,
-    MapPageRoutingModule
+    MapPageRoutingModule,
+    ViewtypeSegmentModule,
   ],
   declarations: [MapPage]
 })

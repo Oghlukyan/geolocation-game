@@ -8,19 +8,15 @@
 </ion-header>
 
 <ion-content *ngIf="adventure">
-  <div class="ion-padding-start">
-    <ion-text>
+  <div class="ion-padding-start adventure-header">
+    <ion-text color="secondary">
       <h1>{{ adventure.description }}</h1>
     </ion-text>
-    <ion-text>
-      <h5>Action {{ selectedActionIndex + 1 }}/{{ adventure.actions.length }}</h5>
-    </ion-text>
+    <ion-button fill="clear">
+      <ion-icon name="map"></ion-icon>
+    </ion-button>
   </div>
   <div>
-    <ion-button>
-      <ion-icon name="map"></ion-icon>
-      <ion-text>Show Adventure on map</ion-text>
-    </ion-button>
     <ion-slides [options]="slideOpts"
                 (ionSlideWillChange)="handleSlideChange($event)">
       <ion-slide *ngFor="let action of adventure.actions">

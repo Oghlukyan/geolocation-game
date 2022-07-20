@@ -3,7 +3,15 @@
 </ion-header>
 
 <ion-content>
+  <app-viewtype-segment></app-viewtype-segment>
   <ion-list *ngIf="adventures$ | async as adventures">
+    <ion-item>
+      <ion-label class="search-input-label" position="floating">
+        <ion-icon name="search"></ion-icon>
+        <ion-text>Search By Name</ion-text>
+      </ion-label>
+      <ion-input></ion-input>
+    </ion-item>
     <ion-item *ngFor="let adventure of adventures">
       <ion-card>
         <ion-card-header (click)="goToActions(adventure.id)">
@@ -17,9 +25,11 @@
 <!--          ASK about ideas for video and audio -->
           <img *ngIf="adventure.imageUrls?.length"
                [src]="adventure.imageUrls[0]"/>
-          <ion-button>
-            <ion-icon name="map"></ion-icon>
-            <ion-text>Show on map</ion-text>
+          <ion-button class="ion-margin-bottom" fill="clear">
+            <ion-icon class="ion-padding-end" name="cloud-download"></ion-icon>
+          </ion-button>
+          <ion-button class="ion-margin-bottom" fill="clear">
+            <ion-icon class="ion-padding-end" name="map"></ion-icon>
           </ion-button>
         </ion-card-content>
       </ion-card>

@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Explore interactive
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="profile-info ion-padding">
+    <div class="avatar ">
+      <span>AO</span>
+    </div>
+    <div class="full-name">
+      <ion-text>Artur Oghlukyan</ion-text>
+    </div>
+  </div>
+
+  <ion-item-divider></ion-item-divider>
+
+  <div class="rewards ion-padding">
+    <h2>Rewards</h2>
+    <ion-chip color="dark">
+      <ion-icon name="timer-outline" color="primary"></ion-icon>
+      <ion-label color="primary">Rapid</ion-label>
+    </ion-chip>
+    <ion-chip color="dark">
+      <ion-icon name="earth-outline" color="primary"></ion-icon>
+      <ion-label color="primary">10 countries reached</ion-label>
+    </ion-chip>
+    <ion-chip color="dark">
+      <ion-icon name="footsteps-outline" color="primary"></ion-icon>
+      <ion-label color="primary">30 km by walk</ion-label>
+    </ion-chip>
+  </div>
+
+  <ion-item-divider></ion-item-divider>
+
+  <div class="adventures-history ion-padding">
+    <h2>Accomplished Adventures</h2>
+
+    <!-- copy from adventures component -->
+    <ion-list *ngIf="adventures$ | async as adventures">
+      <ion-item>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-text>{{ adventures[0].name }}</ion-text>
+            </ion-card-title>
+            <ion-card-subtitle>{{ adventures[0].description }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <!--          ASK about ideas for video and audio -->
+            <img *ngIf="adventures[0].imageUrls?.length"
+                 [src]="adventures[0].imageUrls[0]"/>
+            <ion-button class="ion-margin-bottom" fill="clear">
+              <ion-icon class="ion-padding-end" name="map"></ion-icon>
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

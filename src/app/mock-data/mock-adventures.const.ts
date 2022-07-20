@@ -7,19 +7,21 @@ export const mockAdventures: IAdventure[] = [
       'https://cdn.visitportugal.com/sites/www.visitportugal.com/files/mediateca/CidadelaBraganca_TurismoPortoNorte-d.jpg',
     ],
     actions: mockActions,
+    name: 'Braganca',
+    description: 'Visit the historical and cultural parts of Braganca',
   },
   {
     imageUrls: [
-      'https://s2.glbimg.com/YPvpv7j-Rve_etlQcfT23B1J84U=/0x0:1280x960/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/g/8/5LwUecQPShdQRoqIC2KQ/lago-do-taboao-braganca-paulista-secom.jpg',
+      'https://www.brunswickgroup.com/media/8384/lisbon.jpg',
     ],
     actions: mockActions,
+    name: 'Lisbon',
+    description: 'Explore Lisbon\s attractive places',
   },
 ].map(
   (it, index) => ({
     ...it,
     id: `${ index }`,
     area: { geoPoint: { latitude: 1, longitude: 1 }, radius: 1 },
-    name: `adventure ${index + 1}`,
-    description: `description for adv. ${index + 1}`,
   } as IAdventure),
 );
