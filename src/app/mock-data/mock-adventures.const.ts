@@ -9,6 +9,7 @@ export const mockAdventures: IAdventure[] = [
     actions: mockActions,
     name: 'Braganca',
     description: 'Visit the historical and cultural parts of Braganca',
+    downloaded: true,
   },
   {
     imageUrls: [
@@ -17,6 +18,7 @@ export const mockAdventures: IAdventure[] = [
     actions: mockActions,
     name: 'Lisbon',
     description: 'Explore Lisbon\s attractive places',
+    downloaded: false,
   },
 ].map(
   (it, index) => ({

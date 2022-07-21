@@ -6,4 +6,5 @@ export interface IAdventure extends IAbstractDetails {
   id: string;
   actions: IAction[];
   area: { geoPoint: IGeoPoint; radius: number };
+  downloaded: boolean;
 }
