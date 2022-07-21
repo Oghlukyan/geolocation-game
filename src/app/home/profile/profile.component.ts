@@ -26,4 +26,8 @@ export class ProfileComponent implements OnInit {
   logout() {
     this.router.navigate(['login']);
   }
+
+  goToMap() {
+    this.router.navigate(['home', 'map']);
+  }
 }

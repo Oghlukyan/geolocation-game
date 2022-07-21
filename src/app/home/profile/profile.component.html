@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Explore interactive
+      Explore interactively
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -54,7 +54,7 @@
             <!--          ASK about ideas for video and audio -->
             <img *ngIf="adventures[0].imageUrls?.length"
                  [src]="adventures[0].imageUrls[0]"/>
-            <ion-button class="ion-margin-bottom" fill="clear">
+            <ion-button class="ion-margin-bottom" fill="clear" (click)="goToMap()">
               <ion-icon class="ion-padding-end" name="map"></ion-icon>
             </ion-button>
           </ion-card-content>

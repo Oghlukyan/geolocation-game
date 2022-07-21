@@ -12,7 +12,8 @@ export class OnlyMapComponent implements OnInit, AfterViewInit {
 
   @ViewChild(GoogleMap) map: GoogleMap;
 
-  @Input() markers: {position: {lat: any, lng: any}}[];
+  @Input() markers: {position: {lat: any; lng: any}}[] = [];
+  @Input() findRoute: true;
 
   constructor(
     private geolocation: Geolocation,
@@ -24,13 +25,14 @@ export class OnlyMapComponent implements OnInit, AfterViewInit {
     console.log(this.map);
     console.log(this.map.googleMap);
 
-    this.map.googleMap.setCenter({ lat: 41.80535760284031, lng: -6.766691255127302 });
-    this.map.googleMap.setZoom(15);
-
     this.fitMarkersInScreen();
+
+    if(this.findRoute) {
+      this.findAndShowRoute();
+    }
   }
 
-  async findAndShowRoute(destLat, destLng) {
+  async findAndShowRoute(destLat?, destLng?) {
     const position = await this.geolocation.getCurrentPosition();
 
     const directionsRenderer = new google.maps.DirectionsRenderer();
@@ -41,7 +43,7 @@ export class OnlyMapComponent implements OnInit, AfterViewInit {
 
     const request: google.maps.DirectionsRequest = {
       origin: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-      destination: new google.maps.LatLng(destLat, destLng),
+      destination: new google.maps.LatLng(destLat || this.markers[0].position.lat, destLng || this.markers[0].position.lng),
       travelMode: google.maps.TravelMode.WALKING,
     };
     directionsService.route(request).then(response => {

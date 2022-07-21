@@ -11,6 +11,8 @@ export class ActionComponent implements OnInit {
 
   @Input() action: IAction;
 
+  isModalOpen = false;
+
   readonly EActionTypes = EActionTypes;
 
   constructor() {
@@ -19,4 +21,7 @@ export class ActionComponent implements OnInit {
   ngOnInit() {
   }
 
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
 }

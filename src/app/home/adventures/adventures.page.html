@@ -28,7 +28,7 @@
           <ion-button *ngIf="!adventure.downloaded" class="ion-margin-bottom" fill="clear">
             <ion-icon class="ion-padding-end" name="cloud-download"></ion-icon>
           </ion-button>
-          <ion-button class="ion-margin-bottom" fill="clear">
+          <ion-button class="ion-margin-bottom" fill="clear" (click)="goToMap()">
             <ion-icon class="ion-padding-end" name="map"></ion-icon>
           </ion-button>
         </ion-card-content>
