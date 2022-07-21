@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { InProcessRoutingModule } from './in-process-routing.module';
 import { InProcessComponent } from './in-process.component';
+import { ActionsPageModule } from '../../actions/actions.module';
+import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { InProcessComponent } from './in-process.component';
   ],
   imports: [
     CommonModule,
-    InProcessRoutingModule
-  ]
+    InProcessRoutingModule,
+    ActionsPageModule,
+    IonicModule,
+  ],
 })
 export class InProcessModule { }

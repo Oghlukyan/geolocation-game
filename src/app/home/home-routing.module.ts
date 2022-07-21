@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'in-process',
-        loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
+        loadChildren: () => import('./in-process/in-process.module').then(m => m.InProcessModule),
       },
       {
         path: '',

@@ -17,6 +17,9 @@ import { ActionModule } from '../shared/components/action/action.module';
         ActionsPageRoutingModule,
         ActionModule,
     ],
-  declarations: [ActionsPage]
+    exports: [
+        ActionsPage,
+    ],
+    declarations: [ActionsPage],
 })
 export class ActionsPageModule {}

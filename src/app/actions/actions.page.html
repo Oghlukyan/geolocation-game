@@ -7,7 +7,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="adventure">
+<ion-content *ngIf="adventure; else emptyContentTpl">
+  <div class="ion-padding-top start-button" *ngIf="inProcessAdventureId === undefined">
+    <ion-button (click)="startAdventure()">Start</ion-button>
+  </div>
+  <div class="ion-padding-top start-button" *ngIf="selectedActionIndex === adventure.actions.length - 1">
+    <ion-button (click)="finishAdventure()">Finish</ion-button>
+  </div>
   <div class="ion-padding-start adventure-header">
     <ion-text color="secondary">
       <h1>{{ adventure.description }}</h1>
@@ -27,7 +33,16 @@
     </ion-slides>
   </div>
 </ion-content>
-<ion-footer>
+
+<ng-template #emptyContentTpl>
+  <ion-content style="height: 110%">
+    <div style="height: 100%; display: flex; justify-content: center; align-items: center">
+      <ion-text color="secondary" style="font-size: 24px">Nothing in process.</ion-text>
+    </div>
+  </ion-content>
+</ng-template>
+
+<ion-footer *ngIf="adventure">
   <ion-toolbar>
     <ion-segment scrollable
                  [value]="selectedActionIndex"

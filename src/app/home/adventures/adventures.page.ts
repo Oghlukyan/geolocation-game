@@ -32,7 +32,8 @@ export class AdventuresPage implements OnInit {
   }
 
   goToActions(adventureId) {
-    this.navController.navigateForward(['actions', adventureId]);
+    this.adventureService.inProcessAdventureId = adventureId;
+    this.navController.navigateForward(['home', 'in-process']);
   }
 
   goToMap() {

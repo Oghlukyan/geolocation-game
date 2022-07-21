@@ -2,6 +2,15 @@ ion-header ion-toolbar {
   --background: var(--ion-color-medium);
 }
 
+.start-button {
+  display: flex;
+  justify-content: center;
+
+  ion-button {
+    width: 80%;
+  }
+}
+
 .adventure-header {
   display: flex;
   justify-content: space-between;

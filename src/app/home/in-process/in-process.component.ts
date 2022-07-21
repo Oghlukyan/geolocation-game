@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdventureService } from '../services/adventure.service';
 
 @Component({
   selector: 'app-in-process',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InProcessComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public adventureService: AdventureService
+  ) { }
 
   ngOnInit() {}
 
