@@ -21,7 +21,6 @@ export class OnlyMapComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    this.asd();
     console.log(this.map);
     console.log(this.map.googleMap);
 
@@ -31,25 +30,30 @@ export class OnlyMapComponent implements OnInit, AfterViewInit {
     this.fitMarkersInScreen();
   }
 
-  private async asd() {
-    // error on browser
+  async findAndShowRoute(destLat, destLng) {
     const position = await this.geolocation.getCurrentPosition();
-    console.log(position);
-    console.log(position.coords);
 
-
-
-    const request = {
-      location: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
-      rankBy: google.maps.places.RankBy.DISTANCE,
-      types: ['bar', 'cafe', 'food', 'liquor_store', 'lodging', 'meal_delivery', 'meal_takeaway', 'night_club', 'restaurant'],
-      keyword: ['bar', 'pub']
-    };
+    const directionsRenderer = new google.maps.DirectionsRenderer();
     const directionsService = new google.maps.DirectionsService();
 
+    directionsRenderer.setMap(this.map.googleMap);
+    directionsRenderer.setOptions( { suppressMarkers: true } );
 
-    // directionsService.route(request, )
+    const request: google.maps.DirectionsRequest = {
+      origin: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+      destination: new google.maps.LatLng(destLat, destLng),
+      travelMode: google.maps.TravelMode.WALKING,
+    };
+    directionsService.route(request).then(response => {
+      directionsRenderer.setDirections(response);
+    }).catch(error => {
+      console.log('direction error', error);
+      window.alert(`Direction request failed due to ${error}`);
+    });
 
+    this.markers.push({
+      position: { lat: destLat, lng: destLng },
+    });
   }
 
   private fitMarkersInScreen() {

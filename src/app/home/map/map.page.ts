@@ -1,10 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GoogleMap } from '@angular/google-maps';
-import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
-
-// const {Geolocation} = Plugins;
 
 @Component({
   selector: 'app-map',
@@ -14,23 +9,23 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 export class MapPage implements OnInit {
 
   readonly markers = [{
-    position: {
-      lat: 41.800007,
-      lng: -6.762593,
+      position: {
+        lat: 41.800007,
+        lng: -6.762593,
+      },
+      label: {
+        color: 'purple',
+        text: 'Visit the historical parts of Braganca',
+      },
+      options: { animation: google.maps.Animation.DROP },
     },
-    label: {
-      color: 'orange',
-      text: 'Visit the historical parts of Braganca',
-    },
-    options: { animation: google.maps.Animation.DROP },
-  },
     {
       position: {
         lat: 38.716309,
         lng: -9.130014,
       },
       label: {
-        color: 'orange',
+        color: 'purple',
         text: 'Explore Lisbon\'s attractive parts',
       },
       options: { animation: google.maps.Animation.DROP },
