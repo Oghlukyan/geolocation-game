@@ -11,8 +11,8 @@ ion-content {
 .avatar {
   border-radius: 50%;
   background: var(--ion-color-secondary);
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   position: relative;
 
   span {
@@ -28,6 +28,12 @@ ion-content {
 .full-name {
   color: var(--ion-color-primary);
   font-size: 24px;
+
+  :last-child {
+    display: block;
+    color: red;
+    font-size: 16px;
+  }
 }
 
 h2 {
